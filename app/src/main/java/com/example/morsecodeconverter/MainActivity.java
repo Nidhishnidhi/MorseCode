@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnEncode=findViewById(R.id.btnEncode);
         btnClear=findViewById(R.id.btnClear);
 
-        final String[] AlphaNumeric =new String[52];//string array for storing alphabets and numbers
+        final String[] AlphaNumeric =new String[52];//string array for storing alphabets, numbers and special characters
         final String[] AlphaNumeric1 =new String[52];//string array for storing corresponding morse code
         
         //assigning alphabets to the string array Alphanumeric[]
@@ -145,25 +145,25 @@ public class MainActivity extends AppCompatActivity {
 
         t1 = new TextToSpeech(getApplicationContext(), i -> {
             if(i != TextToSpeech.ERROR){
-                t1.setLanguage(Locale.UK);
+                t1.setLanguage(Locale.UK);//language to which the morse code will be decoded and encrypted
             }
         });
 
         btnEncode.setOnClickListener(view -> {
-            String input = etinput.getText().toString();
-            String output = "";
-            int l = input.length();
+            String input = etinput.getText().toString();//entered input is stored as String
+            String output = "";//Empty string is assigned as output
+            int l = input.length();//length of input string is calculated and stored
             int i, j;
             for (i = 0; i < l; i++) {
                 String ch = input.substring(i, i + 1);
                 for (j = 0; j < 37; j++) {
-                    if (ch.equalsIgnoreCase(AlphaNumeric[j])) {
-                        output = output.concat(AlphaNumeric1[j]).concat(" ");
+                    if (ch.equalsIgnoreCase(AlphaNumeric[j])) {//finds the index value of each input character in AlphaNumeric array and case of the character is ignored
+                        output = output.concat(AlphaNumeric1[j]).concat(" ");//after finding the index of the character its respective morse code is accessed from Alphanumeric1 and its stor
                     }
                 }
 
             }
-            etoutput.setText(output);
+            etoutput.setText(output);//displays output
         });
 
         btnClear.setOnClickListener(view -> {
@@ -172,28 +172,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnDecode.setOnClickListener(view -> {
-            String input1=etinput.getText().toString();
-            String input=input1.concat(" ");
-            int l=input.length();
+            String input1=etinput.getText().toString();//input string is stored
+            String input=input1.concat(" ");//space is added at the end of the input
+            int l=input.length();//length of the input is calculated
 
             int i,j,p;
-            int pos=0;
-            String letter="";
-            String output="";
+            int pos=0;//indicated the position
+            String letter="";//indicates the letter that is being accessed
+            String output="";//final output
             for(i=0;i<l;i++){
                 int flag=0;
-                String ch=input.substring(i,i+1);
-                if(ch.equalsIgnoreCase(" ")){
+                String ch=input.substring(i,i+1);//each character is accessed
+                if(ch.equalsIgnoreCase(" ")){//if it matches to white space
                     p=i;
-                    letter=input.substring(pos,p);
+                    letter=input.substring(pos,p);//morse code of a letter is stored
                     pos=p+1;
                     flag=1;
                 }
-                String letter1=letter.trim();
+                String letter1=letter.trim();//removes space
                 if(flag==1){
                     for(j=0;j<=36;j++) {
-                        if (letter1.equalsIgnoreCase(AlphaNumeric1[j])) {
-                            output = output.concat(AlphaNumeric[j]);
+                        if (letter1.equalsIgnoreCase(AlphaNumeric1[j])) {//finding the respective index of morsecode 
+                            output = output.concat(AlphaNumeric[j]);//with the help of index its character is accessed from alphanumeric array
                             break;
                         }
                     }

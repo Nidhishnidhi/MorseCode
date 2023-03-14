@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         btnEncode=findViewById(R.id.btnEncode);
         btnClear=findViewById(R.id.btnClear);
 
-        final String[] AlphaNumeric =new String[37];//string array for storing alphabets and numbers
-        final String[] AlphaNumeric1 =new String[37];//string array for storing corresponding morse code
-
+        final String[] AlphaNumeric =new String[52];//string array for storing alphabets and numbers
+        final String[] AlphaNumeric1 =new String[52];//string array for storing corresponding morse code
+        
         //assigning alphabets to the string array Alphanumeric[]
         AlphaNumeric[0]="A";
         AlphaNumeric[1]="B";
@@ -70,6 +70,23 @@ public class MainActivity extends AppCompatActivity {
         AlphaNumeric[34]="8";
         AlphaNumeric[35]="9";
         AlphaNumeric[36]=" ";
+        AlphaNumeric[37]="&";
+        AlphaNumeric[38] = "\'";
+        AlphaNumeric[39] = "@";
+        AlphaNumeric[40] = "(";
+        AlphaNumeric[41] = ")";
+        AlphaNumeric[42] = ":";
+        AlphaNumeric[43] = ",";
+        AlphaNumeric[44] = "=";
+        AlphaNumeric[45] = "!";
+        AlphaNumeric[46] = ".";
+        AlphaNumeric[47] = "-";
+        AlphaNumeric[48] = "+";
+        AlphaNumeric[49] = "\"";
+        AlphaNumeric[50] = "?";
+        AlphaNumeric[51] = "/";
+        
+        
 
         //assigning the corresponding morse code for each letter and number to Alphanumeric1[] array
         AlphaNumeric1[0]=".-";
@@ -109,6 +126,22 @@ public class MainActivity extends AppCompatActivity {
         AlphaNumeric1[34]="---..";
         AlphaNumeric1[35]="----.";
         AlphaNumeric1[36]="/";
+        AlphaNumeric1[37] = ".-...";
+        AlphaNumeric1[38] = ".----.";
+        AlphaNumeric1[39] = ".--.-.";
+        AlphaNumeric1[40] = "-.--.-";
+        AlphaNumeric1[41] = "-.--.";
+        AlphaNumeric1[42] = "---...";
+        AlphaNumeric1[43] = "--..--";
+        AlphaNumeric1[44] = "-...-";
+        AlphaNumeric1[45] = "-.-.--";
+        AlphaNumeric1[46] = ".-.-.-";
+        AlphaNumeric1[47] = "-....-";
+        AlphaNumeric1[48] = ".-.-.";
+        AlphaNumeric1[49] = ".-..-.";
+        AlphaNumeric1[50] = "..--..";
+        AlphaNumeric1[51] = "-..-.";
+        
 
         t1 = new TextToSpeech(getApplicationContext(), i -> {
             if(i != TextToSpeech.ERROR){
